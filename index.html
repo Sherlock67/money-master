@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Money Tracker</title>
     <link rel="stylesheet" href="styles/style.css">
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <!-- Top heading -->
-
-    <h1 class="text-center text pt-5 pb-5">My Money Tracking App</h1>
-    <!-- Top heading -->
+   
     <main>
+         <!-- Top heading -->
+        <h1 class="text-center text pt-5 pb-5">My Money Tracking App</h1>
+        <!-- Calculator -->
         <section>
             <div class="container">
                 <div class="row gx-5">
@@ -25,27 +26,27 @@
                         <h4 class="fs-4 text-center pb-3">Income</h4>
                         <div class="d-flex justify-content-center align-items-center pb-3">
                             <h4 class="fs-5 mx-2">Income: </h4>
-                            <input type="text" class="form-control w-50" >
+                            <input id="total-income" type="text" class="form-control w-50" >
                         </div>
                         <h4 class="text-center">Expenses</h4>
                         <div class="d-flex justify-content-center align-items-center pb-3">
-                            <h4 class="fs-5 mx-2">Clothes:</h4>
-                            <input type="text" class="form-control w-50" >
+                            <h4 class="fs-5 mx-2">Food:</h4>
+                            <input id="food-cost" type="text" class="form-control w-50" >
                         </div>
                         <div class="d-flex justify-content-center align-items-center pb-3">
                             <h4 class=" fs-5 mx-4">Rent:</h4>
-                            <input type="text" class="form-control w-50" >
+                            <input id="rent-cost"type="text" class="form-control w-50" >
                         </div>
                         <div class="d-flex justify-content-center align-items-center pb-3">
                             <h4 class=" fs-5 mx-2">Clothes:</h4>
-                            <input type="text" class="form-control w-50 " >
+                            <input id="cloth-cost" type="text" class="form-control w-50 " >
                         </div>
                         <div class="text-center pb-3">
-                            <button type="button" class=" btn btn-primary btn-lg">Calculate</button>
+                            <button type="button" id="calculate"class=" btn btn-primary btn-lg">Calculate</button>
                         </div>
                         <div>
-                            <h4 class="text-center">Total Balance : 3000</h4>
-                            <h4  class="text-center"> Balance : 3000</h4>
+                            <h4 class="text-center">Total Expenses : <span id="total-expense">3000</span></h4>
+                            <h4  class="text-center">Balance :<span id="after-expense-total">3000</span></h4>
                         </div>
                         <div class="d-flex justify-content-center align-items-center pb-3 pt-3">
                             <h4 class="mx-2">Save</h4>
@@ -57,19 +58,13 @@
                             <h4 class="text-center">Save Amount: 3000</h4>
                             <h4  class="text-center"> Remaining Balance : 3000</h4>
                         </div>
-                        
                     </div>
                   </div>
-                 
                 </div>
               </div>
-    
         </section>
     </main>
-   
-    
-    
-    
+    <!-- Bootstrapjs -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
 

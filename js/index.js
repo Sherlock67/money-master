@@ -19,17 +19,17 @@ document.getElementById('calculate').addEventListener('click',function(){
    
 });
 document.getElementById('save-button').addEventListener('click',function(){
+    const afterExpenseBalanceText = document.getElementById('after-expense-total').innerText;
+    const TotalIncomeText = document.getElementById('total-income').value;
     const saveAmountPercentageText = document.getElementById('save-percentage').value;
-    const afterExpenseBalanceText = document.getElementById('after-expense-total').value;
     const savePercentage = parseInt(saveAmountPercentageText);
-    console.log(savePercentage)
-    
+    const TotalIncome = parseInt(TotalIncomeText);
     const afterExpenseBalance = parseInt(afterExpenseBalanceText);
-    console.log(afterExpenseBalance)
-    let savingAmount ;
-    savingAmount = (afterExpenseBalance * savePercentage)/100;
-    console.log(savingAmount)
+    let savingAmount,remainingBalance ;
+    savingAmount = Math.round((TotalIncome * savePercentage)/100)  ;
     document.getElementById('save-amount').innerText = savingAmount;
+    remainingBalance = afterExpenseBalance - savingAmount;
+    document.getElementById('remain-balance').innerText = remainingBalance;
 
 
 });

@@ -32,19 +32,23 @@ function validateAndTakeInput(){
     const FoodCostText = document.getElementById('food-cost').value;
     const RentCostText = document.getElementById('rent-cost').value;
     const ClothCostText = document.getElementById('cloth-cost').value;
+ 
     const TotalIncome = parseInt(TotalIncomeText);
     const FoodCost = parseInt(FoodCostText);
     const RentCost = parseInt(RentCostText);
     const ClothCost = parseInt(ClothCostText);
-    if((TotalIncome<0 || FoodCost<0 || RentCost<0 || ClothCost <0) ){
-        // alert('Please Enter a valid Amount ')
-        const nonPositive =  document.getElementById('notmatched');
-        nonPositive.style.display = 'block';
-    }
-   
-    if(typeof(TotalIncomeText)=== 'string' || typeof(TotalIncomeText)=== 'string' || typeof(TotalIncomeText)=== 'string'|| typeof(TotalIncomeText)=== 'string'){
-        // alert('please enter a value')
+    if(typeof(TotalIncomeText) === 'string' || typeof(FoodCostText) || typeof(RentCostText) || typeof(ClothCostText)){
+     
         const stringValid =  document.getElementById('matched');
         stringValid.style.display = 'block';
+        document.getElementById('notmatched').style.display = 'none';
     }
+    if((TotalIncome<0 || FoodCost<0 || RentCost<0 || ClothCost <0) ){
+       
+        const nonPositive =  document.getElementById('notmatched');
+        nonPositive.style.display = 'block';
+        document.getElementById('matched').style.display ='none';
+    }
+   
+    
 }

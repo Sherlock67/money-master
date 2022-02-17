@@ -18,33 +18,39 @@
      
         <!-- Calculator -->
         <section>
+            <div class="text-center">
+                <p id="notmatched" class=" text-danger fs-2 notify">❌ Please Enter Positive Value</p>
+                <p id="matched" class="text-danger fs-2 notify">✅ Please Dont Enter String Value ,Enter a Number</p>
+                <p id="not-enough-money" class="text-danger fs-2  notify">You dont have sufficient money to save</p>
+                <p id="expensive-day" class="text-danger fs-2 notify">You have wasted many today you cant save anything</p>
+            </div>
             <div class="container">
-                <div class="row gx-5">
-                  <div class="col">
+                <div class="row g-5">
+                  <div class=" col-md-6">
                         <img class="h-75 w-100" src="/images/money.jpg"  >
                   </div>
-                  <div class="col">
+                  <div class="col-md-6" style="background-color: lightgray">
                     <div>
-                        <h4 class="fs-4 text-center pb-3">Income</h4>
+                        <h4 class="fs-4 text-center pt-3 pb-3">Income</h4>
                         <div class="d-flex justify-content-center align-items-center pb-3">
                             <h4 class="fs-5 mx-2">Income: </h4>
                             <input id="total-income" type="text" class="form-control w-50" >
                         </div>
                         <h4 class="text-center">Expenses</h4>
                         <div class="d-flex justify-content-center align-items-center pb-3">
-                            <h4 class="fs-5 mx-2">Food:</h4>
+                            <h4 class="fs-5 mx-3">Food:</h4>
                             <input id="food-cost" type="text" class="form-control w-50" >
                         </div>
                         <div class="d-flex justify-content-center align-items-center pb-3">
-                            <h4 class=" fs-5 mx-4">Rent:</h4>
+                            <h4 class="fs-5 mx-3">Rent:</h4>
                             <input id="rent-cost"type="text" class="form-control w-50" >
                         </div>
                         <div class="d-flex justify-content-center align-items-center pb-3">
-                            <h4 class=" fs-5 mx-2">Clothes:</h4>
+                            <h4 class="fs-5 mx-3">Clothes:</h4>
                             <input id="cloth-cost" type="text" class="form-control w-50 " >
                         </div>
                         <div class="text-center pb-3">
-                            <button type="button" id="calculate"class=" btn btn-primary btn-lg">Calculate</button>
+                            <button type="button" id="calculate" class=" btn btn-primary btn-lg">Calculate</button>
                         </div>
                         <div>
                             <h4 class="text-center">Total Expenses : <span id="total-expense">3000</span></h4>
@@ -60,10 +66,7 @@
                             <h4 class="text-center">Save Amount: <span id="save-amount">3000</span></h4>
                             <h4  class="text-center"> Remaining Balance : <span id="remain-balance">3000</span> </h4>
                         </div>
-                        <div class="text-center">
-                            <p id="notmatched" class="notify">❌ Please Enter Positive Value</p>
-                            <p id="matched" class="notify">✅ Please Dont Enter String Value ,Enter a Number</p>
-                        </div>
+                        
                     </div>
                   </div>
                 </div>

@@ -1,54 +1,95 @@
 document.getElementById('calculate').addEventListener('click',function(){
-    //Taking all the values
-    validateAndTakeInput();
-   let TotalExpense,afterExpense;
-   //calculating Expense
-   TotalExpense = FoodCost + RentCost + ClothCost;
-   document.getElementById('total-expense').innerText = TotalExpense;
-   //calculating after expense balance
-   afterExpense = TotalIncome - TotalExpense;
-   document.getElementById('after-expense-total').innerText = afterExpense;
-
+ 
+   const TotalIncome = getInput('total-income');
+   const FoodCost = getInput('food-cost');
+   const RentCost = getInput('rent-cost');
+   const ClothCost = getInput('cloth-cost');
+   const TotalExpense = totalExpense(FoodCost,RentCost,ClothCost);
+   const afterExpense = TotalIncome - TotalExpense;
+   if(TotalExpense >= 0 && TotalIncome >=0){
+    setInnerText('total-expense',TotalExpense);
+    setInnerText('after-expense-total',afterExpense);   
+   }
+   if(TotalIncome>0 && TotalExpense>=TotalIncome){
+    document.getElementById('expensive-day').style.display = 'block';
+   }
    
+  
 });
 document.getElementById('save-button').addEventListener('click',function(){
-    const afterExpenseBalanceText = document.getElementById('after-expense-total').innerText;
-    const TotalIncomeText = document.getElementById('total-income').value;
-    const saveAmountPercentageText = document.getElementById('save-percentage').value;
-    const savePercentage = parseInt(saveAmountPercentageText);
-    const TotalIncome = parseInt(TotalIncomeText);
-    const afterExpenseBalance = parseInt(afterExpenseBalanceText);
-    let savingAmount,remainingBalance ;
-    savingAmount = Math.round((TotalIncome * savePercentage)/100)  ;
-    document.getElementById('save-amount').innerText = savingAmount;
-    remainingBalance = afterExpenseBalance - savingAmount;
-    document.getElementById('remain-balance').innerText = remainingBalance;
-
-
-});
-
-function validateAndTakeInput(){
-    const TotalIncomeText = document.getElementById('total-income').value;
-    const FoodCostText = document.getElementById('food-cost').value;
-    const RentCostText = document.getElementById('rent-cost').value;
-    const ClothCostText = document.getElementById('cloth-cost').value;
- 
-    const TotalIncome = parseInt(TotalIncomeText);
-    const FoodCost = parseInt(FoodCostText);
-    const RentCost = parseInt(RentCostText);
-    const ClothCost = parseInt(ClothCostText);
-    if(typeof(TotalIncomeText) === 'string' || typeof(FoodCostText) || typeof(RentCostText) || typeof(ClothCostText)){
-     
-        const stringValid =  document.getElementById('matched');
-        stringValid.style.display = 'block';
-        document.getElementById('notmatched').style.display = 'none';
-    }
-    if((TotalIncome<0 || FoodCost<0 || RentCost<0 || ClothCost <0) ){
-       
-        const nonPositive =  document.getElementById('notmatched');
-        nonPositive.style.display = 'block';
-        document.getElementById('matched').style.display ='none';
-    }
-   
+    const afterExpenseBalance = innerTextExtractor('after-expense-total');
+    const TotalIncome = getInput('total-income');
+    const savePercentage = getInput('save-percentage');
+    const savingAmount = findSaving(TotalIncome,savePercentage);
     
+    if(savingAmount >= afterExpenseBalance){
+        document.getElementById('not-enough-money').style.display = 'block';
+    }
+    setInnerText('save-amount',savingAmount);
+    const remainingBalance = afterExpenseBalance - savingAmount;
+    setInnerText('remain-balance',remainingBalance);
+});
+//taking all the input fields and validating it
+// if the validation is true its does nothing except -1
+//else all is good ready to go
+function getInput(inputId){
+    const inputField = document.getElementById(inputId);
+    const inputAmountText = inputField.value;
+    const amountValue = parseInt(inputAmountText);
+   if(validate(amountValue) == true){
+        return -1;
+   } else{
+    return amountValue;
+   }
+}
+// validation of input
+function validate(value){
+    
+    if(isNaN(value)){
+        document.getElementById('matched').style.display = 'block';
+        document.getElementById('notmatched').style.display = 'none';
+       
+        return true;
+    }
+    if(value < 0){
+        console.log('hi there')
+        // console.log('h')
+        document.getElementById('notmatched').style.display = 'block';
+        document.getElementById('matched').style.display = 'none';
+        document.getElementById('expensive-day').style.display = 'none';
+        document.getElementById('not-enough-money').style.display = 'none';
+        return true;
+    }  
+}
+//Setting InnerText of Html only on then if the value is greater than 0
+function setInnerText(textid,value){
+    if(value>= 0){
+        const textValueSet = document.getElementById(textid).innerText = value;
+        const textValue = parseInt(textValueSet);
+        return textValue;
+    }
+}
+//Calculating Expense
+function totalExpense(food,rent,cloth){
+    let TotalExpense = -1;
+    if(food >= 0 && rent >= 0 && cloth >=0){
+       
+        TotalExpense = food + rent + cloth;
+    }
+    return TotalExpense;
+}
+//finding innertext
+function innerTextExtractor(id){
+    const valueText = document.getElementById(id).innerText;
+    const valueWithoutText = parseInt(valueText);
+    return valueWithoutText;
+}
+// calculating sum
+function findSaving(income,percentage){
+    let savingAmount ;
+    savingAmount = Math.round((income * percentage)/100);
+    
+       
+  
+    return savingAmount;
 }

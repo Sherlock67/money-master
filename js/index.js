@@ -1,13 +1,6 @@
 document.getElementById('calculate').addEventListener('click',function(){
     //Taking all the values
-   const TotalIncomeText = document.getElementById('total-income').value;
-   const FoodCostText = document.getElementById('food-cost').value;
-   const RentCostText = document.getElementById('rent-cost').value;
-   const ClothCostText = document.getElementById('cloth-cost').value;
-   const TotalIncome = parseInt(TotalIncomeText);
-   const FoodCost = parseInt(FoodCostText);
-   const RentCost = parseInt(RentCostText);
-   const ClothCost = parseInt(ClothCostText);
+    validateAndTakeInput();
    let TotalExpense,afterExpense;
    //calculating Expense
    TotalExpense = FoodCost + RentCost + ClothCost;
@@ -33,3 +26,25 @@ document.getElementById('save-button').addEventListener('click',function(){
 
 
 });
+
+function validateAndTakeInput(){
+    const TotalIncomeText = document.getElementById('total-income').value;
+    const FoodCostText = document.getElementById('food-cost').value;
+    const RentCostText = document.getElementById('rent-cost').value;
+    const ClothCostText = document.getElementById('cloth-cost').value;
+    const TotalIncome = parseInt(TotalIncomeText);
+    const FoodCost = parseInt(FoodCostText);
+    const RentCost = parseInt(RentCostText);
+    const ClothCost = parseInt(ClothCostText);
+    if((TotalIncome<0 || FoodCost<0 || RentCost<0 || ClothCost <0) ){
+        // alert('Please Enter a valid Amount ')
+        const nonPositive =  document.getElementById('notmatched');
+        nonPositive.style.display = 'block';
+    }
+   
+    if(typeof(TotalIncomeText)=== 'string' || typeof(TotalIncomeText)=== 'string' || typeof(TotalIncomeText)=== 'string'|| typeof(TotalIncomeText)=== 'string'){
+        // alert('please enter a value')
+        const stringValid =  document.getElementById('matched');
+        stringValid.style.display = 'block';
+    }
+}
